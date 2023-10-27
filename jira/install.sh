@@ -31,7 +31,6 @@ helm install jira atlassian-data-center/jira --namespace atlas --version 1.16.5 
 
 # after installation enter jira pod 
 
-
 # remove directory on the pod
 cd /var/atlassian/application-data/shared-home/libraries/
 rm -r /var/atlassian/application-data/shared-home/libraries/mysql-connector-j-8.1.0.jar
@@ -39,7 +38,11 @@ rm -r /var/atlassian/application-data/shared-home/libraries/mysql-connector-j-8.
 # download mysql jar
 # that should be on the values.yaml >> additionalLibraries
 # https://atlassian.github.io/data-center-helm-charts/examples/external_libraries/EXTERNAL_LIBS/#3-update-valuesyaml
+# on pod, you can download jar using wget
 wget https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/8.1.0/mysql-connector-j-8.1.0.jar
+# or copy local to pod using kubectl
+# kubectl cp <local-path> <namespace>/<pod-name>:<pod-path>
+kubectl cp mysql-connector-j-8.1.0.jar atlas/jira-0:/var/atlassian/application-data/shared-home/libraries/
 
 
 
