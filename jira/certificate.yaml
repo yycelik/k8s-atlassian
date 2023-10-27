@@ -1,0 +1,11 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: jira-atlas-cert
+spec:
+  secretName: jira-atlas-tls-secret
+  issuerRef:
+    name: xxx-clusterissuer
+    kind: ClusterIssuer
+  dnsNames:
+    - jira.xxx.com
