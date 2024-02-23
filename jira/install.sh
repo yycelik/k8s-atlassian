@@ -1,3 +1,7 @@
+# install k8s-node
+apt install nfs-common
+apt install cifs-utils
+
 #create namespace
 kubectl create namespace atlas
 
